@@ -62,5 +62,25 @@ public class App {
         5) через атрибути анотації @Transactional можна додатково визначити при яких ексепшенах буде/не буде відкат операції
         
             //    @Transactional(rollbackFor = SomeOurException.class) // відкоти операцію при SomeOurException
-            //    @Transactional(noRollbackFor = RuntimeException.class) // не ревертати операцію при RuntimeException       
+            //    @Transactional(noRollbackFor = RuntimeException.class) // не ревертати операцію при RuntimeException  
+            
+            
+        6)  у даному випадку бачимо, що сам ексепшн не прокидається з самого методу і аспект не побачить, що був цей ексепшн
+            то ніякого ролбек щодо транзакції НЕ буде.
+                       
+           так як тут AOP, то відбувається проксування цього паблік методу, і отже є конкретні дії: 
+           коли і що відбудеться якщо метод завершується успішно / не успішно / викидається ексепшн ...
+           
+                    @Transactional
+                    public void addProduct(String name) {
+                        productRepository.addProject(name);
+                        
+                        try {
+                           throw new RuntimeException(";(");
+                        } catch (RuntimeException e) {
+                                e.printStackTrace();
+                        }
+                    }     
+                    
+                     
  */

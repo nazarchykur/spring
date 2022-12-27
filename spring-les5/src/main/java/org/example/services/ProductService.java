@@ -21,6 +21,20 @@ public class ProductService {
     public void addProduct(String name) {
         productRepository.addProject(name);
 //        throw new RuntimeException(";(");
+        
+        /*
+           так як тут RuntimeException не викидається у самому методі, то ніякого ролбек щодо транзакції НЕ буде.
+           
+           так як тут AOP, то відбувається проксування цього паблік методу, і отже є конкретні дії: 
+           коли і що відбудеться якщо метод завершується успішно / не успішно / викидається ексепшн ...
+           
+           у даному випадку бачимо, що сам ексепшн не прокидається з самого методу
+         */
+        try {
+            throw new RuntimeException(";(");
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+        }
     }
 
 }
