@@ -56,5 +56,11 @@ public class App {
             public void addProduct(String name){
                 productRepository.addProject(name);
                 throw new RuntimeException(";(");
-            }    
+            } 
+            
+            
+        5) через атрибути анотації @Transactional можна додатково визначити при яких ексепшенах буде/не буде відкат операції
+        
+            //    @Transactional(rollbackFor = SomeOurException.class) // відкоти операцію при SomeOurException
+            //    @Transactional(noRollbackFor = RuntimeException.class) // не ревертати операцію при RuntimeException       
  */
