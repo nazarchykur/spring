@@ -1,0 +1,4 @@
+org/example/config/ProjectConfig.class
+org/example/repositories/ProductRepository.class
+org/example/services/ProductService.class
+org/example/App.class
