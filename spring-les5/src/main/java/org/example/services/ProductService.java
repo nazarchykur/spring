@@ -17,7 +17,7 @@ public class ProductService {
     @Transactional
     public void addProduct(String name){
         productRepository.addProject(name);
-        throw new RuntimeException(";(");
+//        throw new RuntimeException(";(");
     }
     
 }
